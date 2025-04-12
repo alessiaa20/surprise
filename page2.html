@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our love story</title>
+    <link rel="stylesheet" href="page2.css">
+    <script src="photo-album.js" ></script> <!-- Link to photo-album.js -->
+</head>
+<body>
+    <header class="header">
+        <h1>Part of the gallery of our Love Story</h1>
+        <p>A journey of our beautiful moments together</p>
+    </header>
+
+    <section class="gallery">
+        
+
+        <div class="photo" onclick="openModal('a (1).jpg')">
+            <img src="images/a (1).jpg">
+        </div>
+        <div class="photo" onclick="openModal('a (2).jpg')">
+            <img src="images/a (2).jpg">
+        </div>
+        <div class="photo" onclick="openModal('a (3).jpg')">
+            <img src="images/a (3).jpg">
+        </div>
+        <div class="photo" onclick="openModal('a (4).jpg')">
+            <img src="images/a (4).JPG">
+        </div>
+        <div class="photo" onclick="openModal('a (5).jpg')">
+            <img src="images/a (5).JPG">
+        </div>
+
+        <div class="photo" onclick="openModal('apa.jpg')">
+            <img src="images/apa.jpg">
+        </div>        
+        <div class="photo" onclick="openModal('bega.jpg')">
+            <img src="images/bega.jpg">
+        </div>        
+        <div class="photo" onclick="openModal('ice.jpg')">
+            <img src="images/ice.jpg">
+        </div>        
+        <div class="photo" onclick="openModal('play.jpg')">
+            <img src="images/play.jpg">
+        </div>        
+        <div class="photo" onclick="openModal('tram.jpg')">
+            <img src="images/tram.JPG">
+        </div>
+    </section>
+
+    <!-- Go Back Button at the Top Left -->
+    <a href="main.html" class="go-back-button">Go Back</a>
+
+    <!-- Modal for Image Preview -->
+    <div id="photo-modal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modal-img">
+        <p id="modal-caption"></p>
+    </div>
+</body>
+</html>

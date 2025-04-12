@@ -1,0 +1,155 @@
+/* General Reset */
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: #f7f9fa;
+}
+
+/* Header Styling */
+.header {
+    text-align: center;
+    padding: 30px 0;
+    background: #067878;
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.header p {
+    font-size: 1.2rem;
+    font-style: italic;
+}
+
+/* Gallery Section */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.photo {
+    background: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    height: 300px;  /* Fix the height of the container */
+    display: flex;  /* Use flexbox to center the image */
+    justify-content: center;  /* Horizontally center */
+    align-items: center;  /* Vertically center */
+    position: relative;  /* Ensure the image is within the container */
+}
+
+.photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;  /* Ensures the image fits the frame while preserving aspect ratio */
+}
+
+.photo:hover {
+    transform: scale(1.05);
+}
+
+/* Modal Styling */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding-top: 50px;
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 80%;
+    border-radius: 10px;
+}
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: white;
+    font-size: 3rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close:hover {
+    color: #ff4d4d;
+}
+
+/* Surprise Button Styling */
+.surprise-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: #008080;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1rem;
+    text-decoration: none;
+    border-radius: 12px;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.surprise-button:hover {
+    background: #006666;
+}
+
+/* Go Back Button Styling */
+.go-back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: #008080;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1rem;
+    text-decoration: none;
+    border-radius: 12px;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.go-back-button:hover {
+    background: #006666;
+}
+
+/* Next Button Styling */
+.next-button-container {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.next-button {
+    background: #00b3b3;
+    color: white;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    text-decoration: none;
+    border-radius: 12px;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.next-button:hover {
+    background: #008080;
+}

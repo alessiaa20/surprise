@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #008080;
+            color: white;
+            flex-direction: column;
+            text-align: center;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            color: black;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(4, 80px);
+            gap: 10px;
+            margin-top: 20px;
+            justify-content: center;
+        }
+        .card {
+            width: 80px;
+            height: 80px;
+            background-color: darkgray;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            user-select: none;
+        }
+        .hidden {
+            background-color: darkgray;
+            color: transparent;
+        }
+        #reward {
+            display: none;
+            margin-top: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: green;
+        }
+        #backButton {
+            margin-top: 20px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: #008080;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="reward">
+             Congratulations my very smart baby! You did it! Maybe now you won't have the memory of a goldfish anymore!
+        </div>
+        <h2>Memory game for my cute little goldfish</h2>
+        <div class="grid" id="grid"></div>
+        <p>Match all pairs to win</p>
+        <button id="backButton" onclick="window.location.href = 'index.html';">Go Back</button>
+    </div>
+
+    <script>
+        const symbols = ['🍎', '🍌', '🍇', '🍉', '🍎', '🍌', '🍇', '🍉', '🍒', '🍍', '🍒', '🍍', '🥝', '🍑', '🥝', '🍑'];
+        symbols.sort(() => Math.random() - 0.5);
+
+        const grid = document.getElementById("grid");
+        let selectedCards = [];
+        let matchedPairs = 0;
+
+        symbols.forEach((symbol, index) => {
+            const card = document.createElement("div");
+            card.classList.add("card", "hidden");
+            card.dataset.index = index;
+            card.textContent = symbol;
+            card.onclick = () => flipCard(card);
+            grid.appendChild(card);
+        });
+
+        function flipCard(card) {
+            if (selectedCards.length < 2 && card.classList.contains("hidden")) {
+                card.classList.remove("hidden");
+                card.style.color = "black";
+                selectedCards.push(card);
+            }
+            if (selectedCards.length === 2) {
+                setTimeout(checkMatch, 500);
+            }
+        }
+
+        function checkMatch() {
+            if (selectedCards[0].textContent === selectedCards[1].textContent) {
+                selectedCards[0].onclick = null;
+                selectedCards[1].onclick = null;
+                matchedPairs++;
+                if (matchedPairs === symbols.length / 2) {
+                    document.getElementById("reward").style.display = "block";
+                }
+            } else {
+                selectedCards[0].classList.add("hidden");
+                selectedCards[1].classList.add("hidden");
+                selectedCards[0].style.color = "transparent";
+                selectedCards[1].style.color = "transparent";
+            }
+            selectedCards = [];
+        }
+    </script>
+</body>
+</html>

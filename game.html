@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fun Quiz Game</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background-color: #008080;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: #005f5f;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            font-size: 2em;
+        }
+
+        .question {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+
+        .answer-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 1.2em;
+            background-color: #004f4f;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .answer-btn:hover {
+            background-color: #003f3f;
+        }
+
+        .final-score {
+            font-size: 1.5em;
+            margin-top: 20px;
+        }
+
+        .message {
+            font-size: 1.2em;
+            font-style: italic;
+            margin-top: 10px;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="game-container">
+        <h1>Fun Quiz Game</h1>
+        <p class="question" id="question">Loading...</p>
+        <div id="answer-buttons"></div>
+    </div>
+
+    <script>
+        const quizData = [
+            { question: "When is our anniversary?", answers: ["April 20th", "March 20th", "April 18th", "March 18th"], correct: "April 20th" },
+            { question: "What time was it when we had our first kiss??", answers: ["1:30", "1:40", "1:50", "2:00"], correct: "1:50" },
+            { question: "How many cities did we visit while you were here?", answers: ["1", "2", "3", "4"], correct: "3" },
+            { question: "How old were we when we had our first kiss?", answers: ["24,18", "25,18", "25,19", "24,19"], correct: "25,18" },
+            { question: "How was the weather when we were together in Targu Jiu?", answers: ["Sowing", "Windy", "Rainy", "Foggy"], correct: "Foggy" },
+            { question: "What is the name of the restaurant we went to eat together for the first time?", answers: ["KFC", "Tacobell", "Yumm", "Burger King"], correct: "Yumm" },
+            { question: "What is the Bible verse we share together?", answers: ["Galatians 6:9", "Isaiah 43:4", "Romans 8:28", "Acts 20:24"], correct: "Acts 20:24" },
+            { question: "What was the ingredient that ruined our pancakes?", answers: ["Baking soda", "Chocolate powder", "Flour", "Salt"], correct: "Baking soda" },
+            { question: "What is the first book of the Bible we started studying together? (even tho we never finished it)", answers: ["John", "Acts", "James", "Genesis"], correct: "Acts" },
+            { question: "What is the first movie we ever watched together?", answers: ["Geostorm", "Baby driver", "Inside Out 2", "Bullet train"], correct: "Baby driver" }
+        ];
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+
+        function loadQuestion() {
+            if (currentQuestionIndex >= quizData.length) {
+                showFinalScore();
+                return;
+            }
+
+            const questionData = quizData[currentQuestionIndex];
+            document.getElementById("question").innerText = questionData.question;
+            
+            const answerButtons = document.getElementById("answer-buttons");
+            answerButtons.innerHTML = "";
+            
+            questionData.answers.forEach(answer => {
+                const button = document.createElement("button");
+                button.innerText = answer;
+                button.classList.add("answer-btn");
+                button.onclick = () => selectAnswer(answer);
+                answerButtons.appendChild(button);
+            });
+        }
+
+        function selectAnswer(answer) {
+            if (answer === quizData[currentQuestionIndex].correct) {
+                score++;
+            }
+            currentQuestionIndex++;
+            loadQuestion();
+        }
+
+        function showFinalScore() {
+            let message = "";
+            if (score === quizData.length) {
+                message = "Facts 100% correct — are you trying to win a gold star or just my heart again?";
+            } else if (score >= quizData.length / 2) {
+                message = "You did okayish. Let's generously call it meh with potential.";
+            } else {
+                message = "Womp womp. Not today, sweet stinky. Loser never looked so cute.";
+            }
+
+            setTimeout(() => {
+                document.getElementById("game-container").innerHTML = `
+                    <h1>Quiz Complete</h1>
+                    <p class="final-score">You scored ${score} out of ${quizData.length}!</p>
+                    <p class="message">${message}</p>
+                    <div class="button-container">
+                        <a href="index.html" class="answer-btn">Go Back to Main Page</a>
+                         <a href="game.html" class="answer-btn">Try again</a>
+                    </div>
+                `;
+            }, 1000); 
+        }
+
+        function restartQuiz() {
+            currentQuestionIndex = 0;
+            score = 0;
+            loadQuestion();
+        }
+
+        loadQuestion();
+    </script>
+</body>
+</html>

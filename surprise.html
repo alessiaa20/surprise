@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surprise Letter</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            background-color: #008080;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .letter-container {
+            max-width: 650px;
+            width: 100%;
+            background-color: white;
+            padding: 40px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        .letter-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .letter-header h1 {
+            font-size: 28px;
+            margin-bottom: 5px;
+            font-weight: normal;
+        }
+
+        .date {
+            font-style: italic;
+            color: #555;
+        }
+
+        .letter-body {
+            padding: 0 10px;
+        }
+
+        .letter-body p {
+            margin-bottom: 20px;
+            text-align: justify;
+            font-size: 16px;
+        }
+
+        .opening, .closing {
+            font-style: italic;
+        }
+
+        .signature {
+            font-family: 'Brush Script MT', cursive;
+            font-size: 24px;
+            text-align: right;
+            margin-top: 30px;
+        }
+
+        .letter-footer {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        button {
+            background-color: #008080;
+            border: 1px solid #555;
+            padding: 8px 20px;
+            font-family: 'Georgia', serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #f0f0f0;
+        }
+
+        @media (max-width: 600px) {
+            .letter-container {
+                padding: 25px;
+            }
+            
+            .letter-body p {
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="letter-container">
+        <header class="letter-header">
+            <h1>To My Love,</h1>
+            <p class="date">April 20, 2025</p>
+        </header>
+        <section class="letter-body">
+            <p class="opening">My Dearest,</p>
+            <p>
+                There are so many things I want to say, but words sometimes fall short of truly capturing the depth of what's in my heart. Even so, I find myself compelled to write this letter, to try and express just how much you mean to me.    
+            </p>
+            <p>
+                You are, without a doubt, the most beautiful gift I've ever received. You have a heart that shines with warmth and a mind that radiates wisdom. I admire your kindness, your courage, and the way you approach the world with such an open heart. Your love has taught me to be more patient, to be more forgiving, and to trust more freely. You inspire me every single day—not just with your actions, but with your quiet confidence and the love you give so effortlessly.
+            </p>
+            <p>
+                I know that life will bring its challenges, but I have no doubt that together, we will face them with love, resilience, and unwavering faith. You've already shown me what it means to be strong in the face of adversity, and I'm in awe of the way you handle everything with grace. I'm so proud of you, AJ, and so incredibly proud of the man you are becoming.
+            </p>
+            <p>
+                I promise to stand by you through every season of life—whether it's sunny or stormy. I promise to support you, encourage you, and love you with everything that I am. There's no one else I would rather walk this journey with than you, and I can't wait to see all the beautiful moments we will continue to share.
+            </p>
+            <p>
+                Thank you for being the amazing person you are. Thank you for loving me the way you do, for showing me your heart, and for making me feel like I am truly home. I love you more than words can ever convey, and I am so deeply grateful for the love we share.
+            </p>
+
+            <p class="closing">With all my love,</p>
+            <p class="signature">Alessia</p>
+        </section>
+        <footer class="letter-footer">
+            <button onclick="window.history.back()">Go Back</button>
+        </footer>
+    </div>
+</body>
+</html>

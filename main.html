@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Love Story</title>
+    <link rel="stylesheet" href="styles.css"> 
+    <script src="photo-album.js"></script> 
+    <script>
+        // Function for the Surprise Button
+        function requestPasswordSurprise() {
+            var password = prompt("Enter a special code that represents our love.\nHint: The date of our very first meeting.\nHint 2: It's a 6 NUMBER long password :3");
+            if (password === "010224") {
+                window.location.href = "surprise.html"; // Redirect to surprise.html if the correct password is entered
+            } else {
+                alert("Incorrect password darling, honey, sweetheart. Please try again or go cry about it.");
+            }
+        }
+
+        // Function for the Next Button
+        function requestPasswordNext() {
+            var passwordNext = prompt("What's my favorite nickname to call you?\nHint: It's all in lower case and it has first been used in this context when you came here to Romania in December.");
+            if (passwordNext === "boobie") {
+                window.location.href = "page2.html"; // Redirect to page2.html if the correct password is entered
+            } else {
+                alert("Sorry lovey dovey, try again or try a train");
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Our Love Story</h1>
+        <p>A journey of our beautiful moments together</p>
+    </header>
+
+    <!-- Surprise Button in the Top Right Corner -->
+    <a href="javascript:void(0)" id="surprise-button" class="button" onclick="requestPasswordSurprise()">Surprise</a>
+
+    <!-- Gallery Container -->
+    <section class="gallery-container">
+        <section class="gallery">
+            <div class="photo" onclick="openModal('firsttime.jpg', 'The first time we met as a couple. One of the most memorable moments in my life.')">
+                <img src="images/firsttime.jpg" alt="The first time we met as a couple">
+            </div>
+            <div class="photo" onclick="openModal('lumini.jpg', 'When we walked on the center of the city and saw the beautiful lights')">
+                <img src="images/lumini.jpg" alt="Beautiful city lights">
+            </div>
+            <div class="photo" onclick="openModal('train.jpg', 'Our first train ride together')">
+                <img src="images/train.jpg" alt="First train ride">
+            </div>
+            <div class="photo" onclick="openModal('mall.jpg', 'We visited the mall in Arad and took a picture at MY store')">
+                <img src="images/mall.jpg" alt="Mall in Arad">
+            </div>
+            <div class="photo" onclick="openModal('fi.jpg', 'We watched the fireworks together at new years')">
+                <img src="images/fi.jpg" alt="New Year Fireworks">
+            </div>
+            <div class="photo" onclick="openModal('kiss.jpg', 'My fav picture of us kissing <3')">
+                <img src="images/kiss.jpg" alt="Kissing">
+            </div>
+            <div class="photo" onclick="openModal('road.jpg', 'Our bus road to Targu Jiu')">
+                <img src="images/road.jpg" alt="Bus trip">
+            </div>
+            <div class="photo" onclick="openModal('drive.jpg', 'My baby learned to drive. FINALLY')">
+                <img src="images/drive.jpg" alt="Driving">
+            </div>
+            <div class="photo" onclick="openModal('harvest.PNG', 'We worshiped together at Harvest Arad')">
+                <img src="images/harvest.PNG" alt="Church together">
+            </div>
+            <div class="photo" onclick="openModal('balkan.jpg', 'My babys first balkan dinner')">
+                <img src="images/balkan.jpg" alt="Balkan dinner">
+            </div>
+        </section>
+    </section>
+   
+    <!-- Next Button with Password Prompt -->
+    <div class="next-button-container">
+        <a href="javascript:void(0)" class="next-button" onclick="requestPasswordNext()">Next</a>
+    </div>
+<!-- Go Back Button -->
+<a href="index.html" class="back-button">Go Back</a>
+
+<style>
+    .back-button {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        background-color: #008080; /* Teal */
+        color: white;
+        padding: 10px 20px;
+        text-decoration: none;
+        font-size: 18px;
+        border-radius: 10px;
+        transition: 0.3s;
+    }
+
+    .back-button:hover {
+        background-color: #005f5f; /* Darker teal */
+    }
+</style>
+    <div id="photo-modal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modal-img">
+        <p id="modal-caption"></p>
+    </div>
+</body>
+</html>
