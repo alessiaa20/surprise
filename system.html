@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Open When 💌</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #008080;
+      margin: 0;
+      padding: 2rem;
+      color: #055f5f;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      color: #042f2f;
+      margin-bottom: 1rem;
+    }
+
+    .envelope-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      width: 100%;
+      max-width: 900px;
+    }
+
+    .envelope {
+      background-color: #b2e0e0;
+      border: 2px solid #499b9b;
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.2s, background-color 0.3s;
+      box-shadow: 0 4px 8px rgba(0, 100, 100, 0.1);
+    }
+
+    .envelope:hover {
+      background-color: #75b5b5;
+      transform: translateY(-3px);
+    }
+
+    .message {
+      display: none;
+      margin-top: 1rem;
+      font-size: 0.95rem;
+      background-color: #ffffff;
+      padding: 1rem;
+      border-radius: 8px;
+      border: 1px solid #8ed3d3;
+      box-shadow: 0 2px 6px rgba(0, 80, 80, 0.08);
+    }
+
+    .envelope.opened .message {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <h1>💌 Open When Messages</h1>
+  <div class="envelope-grid">
+    <div class="envelope" onclick="toggleMessage(this)">
+      <strong>Open when you're sad</strong>
+      <div class="message">(Matthew 5:4) Hey love, I’m sending you a big hug. Remember how amazing you are, and how proud I am of you. I’m always here 💗Also, I'm wrapping you in an imaginary blanket and telling bad jokes until you laugh. (It’s working, right?)</div>
+    </div>
+    <div class="envelope" onclick="toggleMessage(this)">
+      <strong>Open when you miss me</strong>
+      <div class="message">(Revelation 21:4) I miss you more. Let's play tag—you're it. First one to smile thinking of the other wins :3</div>
+    </div>
+    <div class="envelope" onclick="toggleMessage(this)">
+      <strong>Open when you need a laugh</strong>
+      <div class="message">(Philippians 4:4-5) What do you call cheese that isn't yours?
+        Nacho cheese.</div>
+    </div>
+    <div class="envelope" onclick="toggleMessage(this)">
+      <strong>Open when you can’t sleep </strong>
+      <div class="message">(Matthew 11:28-29) Breathe in. Breathe out. Imagine me cuddling you to sleep, forehead kisses included. Sweet dreams, baby </div>
+    </div>
+    <div class="envelope" onclick="toggleMessage(this)">
+        <strong>Open when you need a hug</strong>
+        <div class="message">(Psalm 33:22) This is your official pass for 1,000 hugs. Redeemable immediately. Hug incoming in 3...2...1...</div>
+      </div>
+      <div class="envelope" onclick="toggleMessage(this)">
+        <strong>Open when you are stessed</strong>
+        <div class="message">(Philippians 4:6-7) If stress burned calories, you’d be an Olympic athlete. And so am I haha. Take a break. I got your back.</div>
+      </div>
+      <div class="envelope" onclick="toggleMessage(this)">
+        <strong>Open when you need a confidence boost</strong>
+        <div class="message">(Joshua 1:9) Mirror, mirror on the wall, who’s the most amazing of them all? (Spoiler: it’s you.)</div>
+      </div>
+      <div class="envelope" onclick="toggleMessage(this)">
+        <strong>Open when you are frustrated</strong>
+        <div class="message">(Proverbs 3:5-6) Take a deep breath, scream into a pillow, then imagine us laughing at how dramatic we both are.</div>
+      </div>
+      <div class="envelope" onclick="toggleMessage(this)">
+        <strong>Open when you are scared</strong>
+        <div class="message">(2 Timothy 1:7) It’s okay to be scared. Just don’t forget you’re braver than you know—and I’m right here.</div>
+      </div>
+      <div class="envelope" onclick="toggleMessage(this)">
+        <strong>Open when you are nervous</strong>
+        <div class="message">(Psalm 23:4) Shake it off, do a silly dance, and remember: you got this and God's got your back!!</div>
+      </div>
+      <div class="envelope" onclick="toggleMessage(this)">
+        <strong>Open when you are troubled</strong>
+        <div class="message">John 16:33: “In this world you will have trouble. But take heart! I have overcome the world.”</div>
+      </div>
+      <div class="envelope" onclick="toggleMessage(this)">
+        <strong>Open when you are bored</strong>
+        <div class="message">Mission: Text me. I’ll assign you something ridiculous immediately.</div>
+      </div>
+      <div class="envelope" onclick="toggleMessage(this)">
+        <strong>Open when you feel lonely</strong>
+        <div class="message">(Isaiah 41:10) You’re never alone—check your heart. I live there rent-free with snacks and memes.</div>
+      </div>
+      <div class="envelope" onclick="toggleMessage(this)">
+        <strong>Open when you need a reminder why you are loved</strong>
+        <div class="message">(Colossians 3:12-13) Because you exist. Because you are yourself and because you are a God-given gift. Because you are kind, caring and attractivee.</div>
+      </div>
+      <div class="envelope" onclick="toggleMessage(this)">
+        <strong>Open when you are sick</strong>
+        <div class="message">(jeremiah 17:14) Sending soup, cuddles, and zero unsolicited medical advice. Or I will try to. Just love </div>
+      </div>
+      <div class="envelope" onclick="toggleMessage(this)">
+        <strong>Open when you have a bad day</strong>
+        <div class="message">(Psalm 9:9) Bad days don’t last. But my love for you? That’s forever.</div>
+      </div>
+      <div class="envelope" onclick="toggleMessage(this)">
+        <strong>Open when you feel overwhelmed</strong>
+        <div class="message">(Matthew 11:28-39) One task at a time, babe. Deep breaths, snacks, and me cheering for you from the sidelines.</div>
+      </div>
+      <div class="envelope" onclick="toggleMessage(this)">
+        <strong>Open when you are silly</strong>
+        <div class="message">Go full goblin mode. I support your chaos</div>
+      </div>
+  </div>
+
+  <script>
+    function toggleMessage(el) {
+      el.classList.toggle("opened");
+    }
+  </script>
+</body>
+</html>
