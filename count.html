@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Countdown to Surprise 🎁</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom right, #a0e7e5, #b4f8c8);
+      color: #004d4d;
+      overflow: hidden;
+    }
+
+    .container {
+      text-align: center;
+      padding: 80px 20px;
+      animation: fadeIn 1.5s ease;
+      position: relative;
+      z-index: 2;
+    }
+
+    h1 {
+      font-size: 3em;
+      color: #007b7b;
+      margin-bottom: 20px;
+    }
+
+    .countdown {
+      font-size: 2em;
+      margin-top: 20px;
+      background-color: #ffffffaa;
+      padding: 20px 40px;
+      border-radius: 20px;
+      display: inline-block;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      animation: pulse 2s infinite;
+    }
+
+    .label {
+      font-weight: bold;
+      font-size: 1.2em;
+      margin-bottom: 10px;
+    }
+
+    .back-button {
+      margin-top: 50px;
+      display: inline-block;
+      padding: 12px 24px;
+      background-color: #007b7b;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 1em;
+      text-decoration: none;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+      transition: background-color 0.3s ease;
+    }
+
+    .back-button:hover {
+      background-color: #005e5e;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="confetti-canvas"></canvas>
+
+  <div class="container">
+    <h1>🎁 A Surprise is Coming... 🎉</h1>
+    <div class="countdown">
+      <div class="label">Countdown to September 1, 2025:</div>
+      <div id="timer">Loading...</div>
+    </div>
+    <br/>
+    <a class="back-button" href="index.html">Go Back</a>
+  </div>
+
+  <!-- Countdown Script -->
+  <script>
+    function updateCountdown() {
+      const targetDate = new Date("2025-09-01T00:00:00");
+      const now = new Date();
+      const diff = targetDate - now;
+
+      if (diff <= 0) {
+        document.getElementById("timer").innerHTML = "🎉 It's here! 🎉";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / 1000 / 60) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      document.getElementById("timer").innerHTML =
+        `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+  </script>
+
+  <!-- Confetti Script -->
+  <script>
+    const canvas = document.getElementById("confetti-canvas");
+    const ctx = canvas.getContext("2d");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const confetti = Array.from({length: 300}).map(() => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 6 + 2,
+      d: Math.random() * 50 + 50,
+      color: `hsl(${Math.random() * 360}, 70%, 60%)`,
+      tilt: Math.random() * 10 - 10,
+      tiltAngle: 0,
+      tiltAngleIncrement: (Math.random() * 0.07) + 0.05
+    }));
+
+    function drawConfetti() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      confetti.forEach(c => {
+        ctx.beginPath();
+        ctx.lineWidth = c.r;
+        ctx.strokeStyle = c.color;
+        ctx.moveTo(c.x + c.tilt + c.r / 2, c.y);
+        ctx.lineTo(c.x + c.tilt, c.y + c.tilt + c.r / 2);
+        ctx.stroke();
+      });
+      updateConfetti();
+    }
+
+    function updateConfetti() {
+      confetti.forEach(c => {
+        c.tiltAngle += c.tiltAngleIncrement;
+        c.y += (Math.cos(c.d) + 1 + c.r / 2) / 2;
+        c.tilt = Math.sin(c.tiltAngle) * 15;
+
+        if (c.y > canvas.height) {
+          c.y = -20;
+          c.x = Math.random() * canvas.width;
+        }
+      });
+    }
+
+    function animateConfetti() {
+      drawConfetti();
+      requestAnimationFrame(animateConfetti);
+    }
+
+    animateConfetti();
+
+    window.addEventListener("resize", () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+  </script>
+</body>
+</html>
